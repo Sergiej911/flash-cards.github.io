@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Flash-Cards</title>
+    <!-- Bootstrap -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <script type="text/javascript" src="js/script.js" defer></script>
+    <script src="js/jquery.flip.js" defer></script>
+    <script type="text/javascript" src="js/words.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.js" defer></script>
+    <script type="text/javascript" src="js/jquery-3.1.1.js"></script>
+    <script type="text/javascript" src="js/webspeechkit.js" defer></script>
+    <!-- <script src="https://webasr.yandex.net/jsapi/v1/webspeechkit-settings.js" type="text/javascript"></script> -->
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div id="page-preloader"><span class="spinner"></span></div>
+    <!-- ПАНЕЛЬ НАВИГАЦИИ -->
+    <div class="container">
+        <div class="row">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand"><span><img alt="Flash-Cards" src="img/logo.png"></span><b>&nbsp;&nbsp;Flash-Cards</b></a>
+                    </div>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><b>A - Z</b><span class="caret"></span></a>
+                                <ul class="dropdown-menu" id="bukwy">
+                                    <a href="#" onclick="abc_a()">A</a>
+                                    <a href="#" onclick="abc_b()">B</a></br>
+                                    <a href="#" onclick="abc_c()">C</a>
+                                    <a href="#" onclick="abc_d()">D</a></br>
+                                    <a href="#" onclick="abc_e()">E</a>
+                                    <a href="#" onclick="abc_f()">F</a></br>
+                                    <a href="#" onclick="abc_g()">G</a>
+                                    <a href="#" onclick="abc_h()">H</a></br>
+                                    <a href="#" onclick="abc_i()">I</a>
+                                    <a href="#" onclick="abc_j()">J</a></br>
+                                    <a href="#" onclick="abc_k()">K</a>
+                                    <a href="#" onclick="abc_l()">L</a></br>
+                                    <a href="#" onclick="abc_m()">M</a>
+                                    <a href="#" onclick="abc_n()">N</a></br>
+                                    <a href="#" onclick="abc_o()">O</a>
+                                    <a href="#" onclick="abc_p()">P</a></br>
+                                    <a href="#" onclick="abc_q()">Q</a>
+                                    <a href="#" onclick="abc_r()">R</a></br>
+                                    <a href="#" onclick="abc_s()">S</a>
+                                    <a href="#" onclick="abc_t()">T</a></br>
+                                    <a href="#" onclick="abc_u()">U</a>
+                                    <a href="#" onclick="abc_v()">V</a></br>
+                                    <a href="#" onclick="abc_w()">W</a>
+                                    <a href="#" onclick="abc_x()">X</a></br>
+                                    <a href="#" onclick="abc_y()">Y</a>
+                                    <a href="#" onclick="abc_z()">Z</a></br>
+                                </ul>
+                            </li>
+                            <li><a href="irregular.html"><b>Irregular verbs</b></a></li>
+                        </ul>
+                        <audio src="" id="audio">
+                        </audio>
+                        <ul class="nav navbar-nav navbar-right">
+                            <form class="navbar-form navbar-left">
+                                <div class="form-group">
+                                    <input type="text" id="search" class="form-control" placeholder="Find a word...">
+                                </div>
+                            </form>
+                        </ul>
+                    </div>
+                    <!-- /.navbar-collapse -->
+                </div>
+                <!-- /.container-fluid -->
+            </nav>
+        </div>
+    </div>
+    <!-- КАРТОЧКА -->
+    <div class="container" id=fab>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+                <div class="flip">
+                    <div class="front">
+                        <div id="fp" class="eng">hi!</div>
+                        <p class="trans">[haɪ]</p>
+                    </div>
+                    <div class="back">
+                        <div class="rus">привет</div>
+                    </div>
+                </div>
+                <div class="btn-group" role="group" aria-label="..." id="bn">
+                    <button type="button" class="btn btn-primary" id="prev" onclick="prev()">Back</button>
+                    <button type="button" class="btn btn-warning" id="rand" onclick="rand()">Random</button>
+                    <button type="button" class="btn btn-success center-block hidden-xs" id="next" onclick="voice()">Play &#9658;</button>
+                    <button type="button" class="btn btn-primary" id="next" onclick="next()">Next</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="container">
+        <div class="row">
+            <h1 class="text-center"><a href="#myModal" role="button" class="btn btn-lg btn-primary" data-toggle="modal">Learn More</a></h1>
+        </div>
+    </div> -->
+    <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <center>
+                        <h3 id="myModalLabel">Developers</h3></center>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="row">
+                        <div class="col-md-6"><img src="img/sk.jpg" alt="..." class="img-thumbnail">
+                            <p>Sergiej Klimentowski&nbsp;<span><img src="img/pl.svg" style="width: 16px; border: 1px solid #DBDBDB"></span></p>
+                        </div>
+                        <div class="col-md-6"><img src="img/gs.jpg" alt="..." class="img-thumbnail">
+                            <p>Gena Semenov&nbsp;<span><img src="img/ua.svg" style="width: 16px; border: 1px solid #DBDBD"></span></p>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="modal-footer">
+                    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                    <button class="btn btn-primary">Save changes</button>
+                </div> -->
+            </div>
+        </div>
+    </div>
+    <!-- FOOTER -->
+    <div class="container">
+        <div class="row">
+            <nav class="navbar navbar-default navbar-fixed-bottom">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <ul class="nav navbar-nav navbar-left hidden-xs">
+                            <li id="copy"><a style="opacity: .5">Copyright © <script>
+                var today = new Date();
+                var yr = today.getFullYear();
+                document.write(yr);
+                </script> Flash-cards. All rights reserved.</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav hidden-xs">
+                            <li id=devf><a href="#myModal" data-toggle="modal">Developers</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><b>Share&nbsp;</b><span class="glyphicon glyphicon-share"></span></a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                    <li id=devf>
+
+                                        <a href="#">
+                                            <script async src="https://usocial.pro/usocial/usocial.js?v=6.1.1" data-script="usocial" charset="utf-8"></script>
+                                            <div class="uSocial-Share" data-pid="533131ca8bfbe13fbbf63245795118a7" data-type="share" data-options="round-rect,style1,absolute,horizontal,size24,eachCounter0,counter0,nomobile" data-social="vk,fb,twi,gPlus,ok,mail"></div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <nav>
+                    </div>
+                </div>
+                <!-- <ul class="nav navbar-nav">
+                    <li id=devf><a href="#myModal" data-toggle="modal"><script async src="https://usocial.pro/usocial/usocial.js?v=6.1.1" data-script="usocial" charset="utf-8"></script>
+<div class="uSocial-Share" data-pid="533131ca8bfbe13fbbf63245795118a7" data-type="share" data-options="round-rect,style1,absolute,horizontal,size24,eachCounter0,counter0,nomobile" data-social="vk,fb,twi,gPlus,ok,mail"></div></a></li>
+                </ul> -->
+      
+    <!---ToolTip -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+</body>
+
+</html>
